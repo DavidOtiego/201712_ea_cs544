@@ -1,10 +1,6 @@
-package cs544.mum.edu.excercise2_2;
+package edu.mum.hw2_2.control;
 
-/**
- * Hello world!
- *
- */
-public class App 
+public class Application 
 {
     public static void main( String[] args )
     {

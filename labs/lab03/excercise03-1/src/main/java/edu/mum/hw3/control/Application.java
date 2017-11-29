@@ -1,10 +1,10 @@
-package cs544.mum.edu.excercise3_1;
+package edu.mum.hw3.control;
 
 /**
  * Hello world!
  *
  */
-public class App 
+public class Application 
 {
     public static void main( String[] args )
     {
