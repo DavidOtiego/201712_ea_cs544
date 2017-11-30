@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,12 +26,16 @@ public class Order {
 	protected Order() {
 
 	}
+	
+	public Order(Date date) {
+		this.date = date;
+	}
 
-	private List<OrderLine> getOrderLine() {
+	public List<OrderLine> getOrderLine() {
 		return this.orderLine;
 	}
 
-	private void addOrder(OrderLine order) {
+	public void addOrder(OrderLine order) {
 		this.orderLine.add(order);
 	}
 
