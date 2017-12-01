@@ -4,6 +4,9 @@
 	version="2.0">
 	<persistence-unit name="cs544">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<class>edu.mum.hw2_2.domain.Order</class>
+		<class>edu.mum.hw2_2.domain.OrderLine</class>
+		<class>edu.mum.hw2_2.domain.Product</class>
 		<properties>
 			<property name="hibernate.connection.driver_class" value="org.gjt.mm.mysql.Driver" />
 			<property name="hibernate.connection.url" value="jdbc:mysql://localhost/cs544?createDatabaseIfNotExist=true" />

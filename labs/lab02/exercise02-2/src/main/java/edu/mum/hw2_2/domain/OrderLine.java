@@ -3,19 +3,22 @@ package edu.mum.hw2_2.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class OrderLine {
-	
-	@Id @GeneratedValue
+
+	@Id
+	@GeneratedValue
 	private int id;
 	private Double quantity;
+	@ManyToOne
 	private Product product;
 
 	protected OrderLine() {
-		
+
 	}
-	
+
 	public OrderLine(Double quantity, Product product) {
 		this.quantity = quantity;
 		this.product = product;
@@ -36,5 +39,5 @@ public class OrderLine {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
-	
+
 }

@@ -5,12 +5,16 @@ import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Office {
 
+	@Id @GeneratedValue
+	private int id;
 	private int roomnumber;
 	private String building;
 

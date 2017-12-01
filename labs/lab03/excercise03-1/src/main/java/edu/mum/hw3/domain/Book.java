@@ -1,9 +1,5 @@
 package edu.mum.hw3.domain;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,18 +17,18 @@ public class Book {
 	private String author;
 
 	@ManyToOne
-	@JoinColumn(name="publisher_id")
-	@ElementCollection
-	private List<Publisher> publishers = new ArrayList<Publisher>();
+	@JoinColumn(name = "publisher_id")
+	private Publisher publisher;
 
 	protected Book() {
 
 	}
 
-	public Book(String isbn, String title, String author) {
+	public Book(String isbn, String title, String author, Publisher publisher) {
 		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
+		this.publisher = publisher;
 	}
 
 	public String getIsbn() {
@@ -59,12 +55,12 @@ public class Book {
 		this.author = author;
 	}
 
-	public List<Publisher> getPublishers() {
-		return this.publishers;
+	public Publisher getPublisher() {
+		return this.publisher;
 	}
 
 	public void addPublishers(Publisher p) {
-		this.publishers.add(p);
+		this.publisher = p;
 	}
 
 }

@@ -19,7 +19,7 @@ public class Application {
 		try {
 			emf = Persistence.createEntityManagerFactory("cs544");
 		} catch (Throwable ex) {
-			ex.printStackTrace();
+			ex.printStackTrace(); 
 			throw new ExceptionInInitializerError(ex);
 		}
 	}

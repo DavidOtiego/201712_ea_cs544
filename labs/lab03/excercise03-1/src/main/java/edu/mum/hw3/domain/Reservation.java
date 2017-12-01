@@ -1,10 +1,7 @@
 package edu.mum.hw3.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,15 +18,15 @@ public class Reservation {
 
 	@ManyToOne
 	@JoinColumn(name = "book_id")
-	@ElementCollection
-	private List<Book> books = new ArrayList<Book>();
+	private Book book;
 
 	protected Reservation() {
 
 	}
 
-	protected Reservation(Date date) {
+	protected Reservation(Date date, Book book) {
 		this.date = date;
+		this.book = book;
 	}
 
 	public Date getDate() {
@@ -40,12 +37,12 @@ public class Reservation {
 		this.date = date;
 	}
 
-	public List<Book> getBooks() {
-		return this.books;
+	public Book getBook() {
+		return this.book;
 	}
 
 	public void addBook(Book b) {
-		this.books.add(b);
+		this.book = b;
 	}
 
 }

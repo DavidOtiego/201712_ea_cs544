@@ -34,7 +34,6 @@ public class Application {
 
 	private static void printOrders() {
 		// TODO Auto-generated method stub
-
 	}
 
 	private static void addOrders() {
