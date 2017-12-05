@@ -16,6 +16,9 @@ public class Project {
 	@Basic(optional = false)
 	private String description;
 
+	@Basic(optional = false)
+	private String keywords;
+
 	@Lob
 	private byte[] descriptionHtml;
 
@@ -41,7 +44,7 @@ public class Project {
 
 	}
 
-	public Project(String description, Address address, Date start, Date end) {
+	public Project(String description, String keywords, Address address, Date start, Date end) {
 		this.description = description;
 		this.address = address;
 		this.expectedStart = start;
@@ -49,15 +52,23 @@ public class Project {
 	}
 
 	public String getDescription() {
-		return description;
+		return this.description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
+	public String getKeyWords() {
+		return this.keywords;
+	}
+
+	public void setKeyWords(String k) {
+		this.keywords = k;
+	}
+
 	public byte[] getDescriptionHtml() {
-		return descriptionHtml;
+		return this.descriptionHtml;
 	}
 
 	public void setDescriptionHtml(byte[] descriptionHtml) {
@@ -65,7 +76,7 @@ public class Project {
 	}
 
 	public Address getAddress() {
-		return address;
+		return this.address;
 	}
 
 	public void setAddress(Address address) {
@@ -73,7 +84,7 @@ public class Project {
 	}
 
 	public Date getExpectedStart() {
-		return expectedStart;
+		return this.expectedStart;
 	}
 
 	public void setExpectedStart(Date start) {
@@ -81,7 +92,7 @@ public class Project {
 	}
 
 	public Date getExpectedEnd() {
-		return expectedEnd;
+		return this.expectedEnd;
 	}
 
 	public void setExpectedEnd(Date end) {
