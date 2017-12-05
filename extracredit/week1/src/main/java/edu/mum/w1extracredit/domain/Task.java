@@ -1,6 +1,7 @@
 package edu.mum.w1extracredit.domain;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -8,92 +9,94 @@ import java.util.List;
 
 @Entity
 public class Task {
-    @Id
-    @GeneratedValue
-    private Integer id;
-    private boolean status;
-    @Temporal(TemporalType.DATE)
-    private Date startingDate;
-    @Temporal(TemporalType.DATE)
-    private Date endingDate;
 
-    @ManyToOne
-    @JoinColumn(name="project_id")
-    Project project;
-    @ElementCollection
-    private List<Resource> resources;
-    @ManyToMany
-    @JoinTable(name="TASK_VOLUNTEER", joinColumns = @JoinColumn(name="task_id"),inverseJoinColumns = @JoinColumn(name="volunteer_id"))
-    private List<Volunteer> volunteers;
+	@Id
+	@GeneratedValue
+	private Integer id;
 
-    public Task() {
-        volunteers=new ArrayList<>();
-        resources=new ArrayList<>();
-    }
-    public void addVolunteer(Volunteer vol){
-        vol.assignTask(this);
-        volunteers.add(vol);
-    }
-    public Volunteer removeVolunteer(Volunteer vol){
-        volunteers.remove(vol);
-        vol.unassignTask(this);
-        return vol;
-    }
-    public void addResource(Resource resource){
-        resources.add(resource);
-    }
-    public Resource removeResource(Resource resource){
-        resources.remove(resource);
-        return resource;
-    }
+	@Enumerated(EnumType.STRING)
+	private TaskStatus status;
 
-    public Integer getId() {
-        return id;
-    }
+	@Basic(optional = false)
+	@Temporal(TemporalType.DATE)
+	private Date startOfTask;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	@Basic(optional = false)
+	@Temporal(TemporalType.DATE)
+	private Date endOfTask;
 
-    public boolean isStatus() {
-        return status;
-    }
+	@Basic(optional = false)
+	private int requiredResources;
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
+	@OneToMany
+	@ElementCollection
+	private List<Resource> resources = new ArrayList<>();
 
-    public Date getStartingDate() {
-        return startingDate;
-    }
+	protected Task() {
 
-    public void setStartingDate(Date startingDate) {
-        this.startingDate = startingDate;
-    }
+	}
 
-    public Date getEndingDate() {
-        return endingDate;
-    }
+	public Task(TaskStatus status, Date start, Date end) {
+		this.status = status;
+		this.startOfTask = start;
+		this.endOfTask = end;
+	}
 
-    public void setEndingDate(Date endingDate) {
-        this.endingDate = endingDate;
-    }
+	public Integer getId() {
+		return id;
+	}
 
-    public Project getProject() {
-        return project;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    public void setProject(Project project) {
-        this.project = project;
-    }
+	public TaskStatus getStatus() {
+		return status;
+	}
 
-    public List<Resource> getResources() {
-        return Collections.unmodifiableList(resources);
-    }
+	public void setStatus(TaskStatus status) {
+		this.status = status;
+	}
 
-    public List<Volunteer> getVolunteers() {
-        return Collections.unmodifiableList(volunteers);
-    }
+	public Date getStartOfTask() {
+		return startOfTask;
+	}
 
+	public void setStartOfTask(Date startOfTask) {
+		this.startOfTask = startOfTask;
+	}
 
+	public Date getEndOfTask() {
+		return endOfTask;
+	}
+
+	public void setEndOfTask(Date endOfTask) {
+		this.endOfTask = endOfTask;
+	}
+
+	public int getRequiredResources() {
+		return requiredResources;
+	}
+
+	public void setEndOfTask(int r) {
+		this.requiredResources = r;
+	}
+
+	public void addResource(Resource r) {
+		this.resources.add(r);
+	}
+
+	public void updateResource(Resource r) {
+		removeResource(r);
+		this.resources.add(r);
+	}
+
+	public void removeResource(Resource r) {
+		if (this.resources.contains(r))
+			this.resources.remove(r);
+	}
+
+	public List<Resource> getResourcess() {
+		return Collections.unmodifiableList(this.resources);
+	}
 }

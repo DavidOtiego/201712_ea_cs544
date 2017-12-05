@@ -6,44 +6,47 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Address {
 
-    @Basic(optional = false)
-    private String state;
-    @Basic(optional = false)
-    private String city;
-    @Basic(optional = false)
-    private Integer zip;
-    @Basic(optional = false)
-    private String street;
+	@Basic(optional = false)
+	private String street;
 
-    public String getState() {
-        return state;
-    }
+	@Basic(optional = false)
+	private String city;
 
-    public void setState(String state) {
-        this.state = state;
-    }
+	@Basic(optional = false)
+	private String state;
 
-    public String getCity() {
-        return city;
-    }
+	@Basic(optional = false)
+	private Integer zip;
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public String getState() {
+		return state;
+	}
 
-    public int getZip() {
-        return zip;
-    }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-    public void setZip(Integer zip) {
-        this.zip = zip;
-    }
+	public String getCity() {
+		return city;
+	}
 
-    public String getStreet() {
-        return street;
-    }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    public void setStreet(String street) {
-        this.street = street;
-    }
+	public int getZip() {
+		return zip;
+	}
+
+	public void setZip(Integer zip) {
+		this.zip = zip;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
 }

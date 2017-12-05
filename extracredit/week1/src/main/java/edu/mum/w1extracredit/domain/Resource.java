@@ -1,48 +1,56 @@
 package edu.mum.w1extracredit.domain;
 
 import javax.persistence.Basic;
-import javax.persistence.Embeddable;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-@Embeddable
+@Entity
 public class Resource {
-    @Basic(optional = false)
-    private String description;
-    @Basic(optional = false)
-    private Integer quantity;
-    private String requiredSquils;
-    @Enumerated
-    ResourceType type;
 
-    public int getQuantity() {
-        return quantity;
-    }
+	@Id
+	@GeneratedValue
+	private int id;
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
+	@Basic(optional = false)
+	private String name;
 
-    public String getRequiredSquils() {
-        return requiredSquils;
-    }
+	@Enumerated(EnumType.STRING)
+	private ResourceType resourceType;
 
-    public void setRequiredSquils(String requiredSquils) {
-        this.requiredSquils = requiredSquils;
-    }
+	protected Resource() {
 
-    public ResourceType getType() {
-        return type;
-    }
+	}
 
-    public void setType(ResourceType type) {
-        this.type = type;
-    }
+	public Resource(String name, ResourceType rType) {
+		this.name = name;
+		this.resourceType = rType;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public ResourceType getResourceType() {
+		return resourceType;
+	}
+
+	public void setResourceType(ResourceType resourceType) {
+		this.resourceType = resourceType;
+	}
+
 }
